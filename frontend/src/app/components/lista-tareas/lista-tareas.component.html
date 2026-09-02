@@ -1,0 +1,96 @@
+<div class="contenedor">
+  <h1>Gestor de Tareas</h1>
+
+  <!-- Formulario para crear una tarea -->
+  <form class="formulario" (ngSubmit)="crearTarea()">
+    <input
+      type="text"
+      placeholder="Título de la tarea"
+      [(ngModel)]="nuevoTitulo"
+      name="titulo"
+      required
+    />
+    <input
+      type="text"
+      placeholder="Descripción (opcional)"
+      [(ngModel)]="nuevaDescripcion"
+      name="descripcion"
+    />
+    <select [(ngModel)]="nuevaPrioridad" name="prioridad">
+      <option value="BAJA">Baja</option>
+      <option value="MEDIA">Media</option>
+      <option value="ALTA">Alta</option>
+    </select>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <!-- Barra de filtros por estado -->
+  <div class="filtros">
+    <button
+      class="filtro"
+      [class.activo]="filtroActivo() === 'TODAS'"
+      (click)="cambiarFiltro('TODAS')">
+      Todas
+    </button>
+    <button
+      class="filtro"
+      [class.activo]="filtroActivo() === 'PENDIENTE'"
+      (click)="cambiarFiltro('PENDIENTE')">
+      Pendientes
+    </button>
+    <button
+      class="filtro"
+      [class.activo]="filtroActivo() === 'EN_PROGRESO'"
+      (click)="cambiarFiltro('EN_PROGRESO')">
+      En progreso
+    </button>
+    <button
+      class="filtro"
+      [class.activo]="filtroActivo() === 'COMPLETADA'"
+      (click)="cambiarFiltro('COMPLETADA')">
+      Completadas
+    </button>
+  </div>
+
+  @if (cargando()) {
+    <p class="mensaje">Cargando tareas...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!cargando() && !error()) {
+    @if (tareas().length === 0) {
+      <p class="mensaje">No hay tareas en esta vista.</p>
+    } @else {
+      <ul class="lista">
+        @for (tarea of tareas(); track tarea.id) {
+          <li class="tarea">
+            <div class="tarea-info">
+              <strong>{{ tarea.titulo }}</strong>
+              @if (tarea.descripcion) {
+                <p>{{ tarea.descripcion }}</p>
+              }
+            </div>
+            <div class="tarea-meta">
+              <select
+                class="select-estado"
+                [ngModel]="tarea.estado"
+                (ngModelChange)="cambiarEstado(tarea, $event)"
+                name="estado-{{ tarea.id }}">
+                <option value="PENDIENTE">Pendiente</option>
+                <option value="EN_PROGRESO">En progreso</option>
+                <option value="COMPLETADA">Completada</option>
+              </select>
+              <span class="badge">{{ tarea.prioridad }}</span>
+              <button class="btn-eliminar" (click)="eliminarTarea(tarea.id)">
+                Eliminar
+              </button>
+            </div>
+          </li>
+        }
+      </ul>
+    }
+  }
+</div>

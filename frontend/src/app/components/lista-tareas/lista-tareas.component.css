@@ -1,0 +1,143 @@
+.contenedor {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  color: #1f3864;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+}
+
+.tarea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.tarea-info p {
+  margin: 0.25rem 0 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.tarea-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #eef1f8;
+  color: #1f3864;
+  white-space: nowrap;
+}
+
+.mensaje, .error {
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.error {
+  background: #fdecec;
+  color: #b71c1c;
+}
+
+.formulario {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.formulario input,
+.formulario select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.formulario input[name="titulo"] {
+  flex: 1;
+  min-width: 180px;
+}
+
+.formulario button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #1f3864;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background: #2a4a80;
+}
+
+.btn-eliminar {
+  padding: 0.25rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: #fdecec;
+  color: #b71c1c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background: #f8d7d7;
+}
+
+.filtros {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filtro {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: #fff;
+  color: #555;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.filtro:hover {
+  border-color: #1f3864;
+}
+
+.filtro.activo {
+  background: #1f3864;
+  color: #fff;
+  border-color: #1f3864;
+}
+
+.select-estado {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
